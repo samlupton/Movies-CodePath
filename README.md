@@ -21,7 +21,7 @@ The following **optional** features are implemented:
 
 The following **additional** features are implemented:
 
-- [ ] Grey background!
+- [x] Grey background!
 
 ## Video Walkthrough
 
