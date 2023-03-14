@@ -9,21 +9,28 @@ import UIKit
 import Nuke
 
 class MovieCell: UITableViewCell {
-
-    override func awakeFromNib() {
-        super.awakeFromNib()
-
-        // Initialization code
-    }
+    @IBOutlet weak var original_title: UILabel!
+    @IBOutlet weak var moviePoster: UIImageView!
+    @IBOutlet weak var overview: UILabel!
+    
+    
     /// Configures the cell's UI for the given track.
-    func configure(with movies: Movie) {
-        movieName.text = movies.movieName
-        movieDescription.text = movies.movieDescription
+    func configure(with movie: Movie) {
+        original_title.text = movie.original_title
+        overview.text = movie.overview
         backgroundColor = .lightGray
 
 
         // Load image async via Nuke library image loading helper method
-        Nuke.loadImage(with: movies.artworkUrl100, into: moviePoster)
+//        Nuke.loadImage(with: movies.backdrop_path, into: moviePoster)
+        Nuke.loadImage(with:URL(string:"https://image.tmdb.org/t/p/w500" + movie.poster_path.absoluteString)!, into: moviePoster)
+    }
+    
+    override func awakeFromNib() {
+        super.awakeFromNib()
+
+        // Initialization code let
+    
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -31,8 +38,4 @@ class MovieCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
-
-    @IBOutlet weak var movieName: UILabel!
-    @IBOutlet weak var moviePoster: UIImageView!
-    @IBOutlet weak var movieDescription: UILabel!
 }

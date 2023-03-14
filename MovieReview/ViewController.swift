@@ -5,24 +5,17 @@
 //  Created by Samuel Lupton on 3/5/23.
 //
 
-//
-//  DetailViewController.swift
-//  lab-tunley
-//
-//  Created by Charlie Hieger on 12/5/22.
-//
-
 import UIKit
 import Nuke
 
 class ViewController: UIViewController {
 
-    @IBOutlet weak var movieNameLabel: UILabel!
-    @IBOutlet weak var voteLabel: UILabel!
-    @IBOutlet weak var popLabel: UILabel!
-    @IBOutlet weak var avVote: UILabel!
+    @IBOutlet weak var original_title: UILabel!
+    @IBOutlet weak var vote_count: UILabel!
+    @IBOutlet weak var popularity: UILabel!
+    @IBOutlet weak var vote_average: UILabel!
     @IBOutlet weak var moviePosterImageView: UIImageView!
-    @IBOutlet weak var movieDescription: UILabel!
+    @IBOutlet weak var overview: UILabel!
     // TODO: Pt 1 - Add a track property
     var movie: Movie!
 
@@ -32,14 +25,15 @@ class ViewController: UIViewController {
 
 
         // TODO: Pt 1 - Configure the UI elements with the passed in track
-        Nuke.loadImage(with: movie.moviePoster, into: moviePosterImageView)
+        Nuke.loadImage(with:URL(string:"https://image.tmdb.org/t/p/w500" + movie.backdrop_path.absoluteString)!, into: moviePosterImageView)
 
         // Set labels with the associated track values.
-        movieNameLabel.text = movie.movieName
-        voteLabel.text = movie.numVotes
-        popLabel.text = movie.numPop
-        avVote.text = movie.numAvgVotes
-        movieDescription.text = movie.movieDescription
+        original_title.text = movie.original_title
+        vote_count.text = String(movie.vote_count)
+        popularity.text = String(movie.popularity)
+        vote_average.text = String(movie.vote_average)
+        overview.text = movie.overview
+        
     }
 }
 
